@@ -1,0 +1,17 @@
+{
+  "name": "rubberline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "request": "^2.64.0"
+  },
+  "devDependencies": {
+    "angular": "^1.4.7",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1"
+  }
+}
