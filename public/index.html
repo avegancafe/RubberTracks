@@ -2,11 +2,33 @@
 <html ng-app="RubberTracks">
 <head>
 	<title>RubberTracks</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="javascripts/ui-bootstrap-0.14.0.min.js"></script>
 	<script src="dist/javascripts/index.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheets/index.css">
 </head>
 <body ng-controller="MainController">
 	
 	<div>This is a test: </div>
+	<div class="btn-group" uib-dropdown is-open="status.isopen">
+      <button id="single-button" type="button" class="btn btn-primary // filter-button" uib-dropdown-toggle ng-disabled="disabled">{{currentFilter}}</button>
+      <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+      	<li ng-repeat="filter in filterList track by $index" role="menuitem"><a href="#" ng-click="changeFilter(filter)">{{filter}}</a></li>
+      </ul>
+    </div>
+    <div class="genre-list">
+		<div class="genre" ng-repeat="genre in filters[currentFilter] | orderBy: '-count'">
+			<div class="genre-wrapper">
+				<div class="ind-genre">
+				{{genre}}
+				<div class="genre-name">{{genre.name}}</div>
+				<br>
+				<div class="genre-count">{{genre.count}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
