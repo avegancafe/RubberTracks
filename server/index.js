@@ -19,6 +19,7 @@ async.parallel([
 	function (cb) {
 		request("http://hackathon.indabamusic.com/samples?filters_only=true", function (req, res) {
 			filters = JSON.parse(res.body);
+			delete filters.packages;
 			console.log("Loaded filters");
 			cb();
 		});
