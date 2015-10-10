@@ -5,10 +5,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="javascripts/ui-bootstrap-0.14.0.min.js"></script>
     <script src="dist/javascripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.0/ui-bootstrap-tpls.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 <body ng-controller="MainController">
+    {{selected}}
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Im a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in currentSegmentItems track by $index" role="menuitem"><a href="#" ng-click="ok(item)">{{item.zip_filename}}</a></li> 
+            </ul>
+        </div>
+    </script>
     
     <div>This is a test: </div>
     <div class="btn-group" uib-dropdown is-open="status.isopen">
@@ -19,17 +31,7 @@
     </div>
     <div class="genre-list">
         <div class="genre" ng-repeat="segment in filters[currentFilter] | orderBy: '-count' track by $index">
-            <div class="btn-group" uib-dropdown ng-click="fetchSegmentData(segment, currentFilter)">
-              <button id="split-button" type="button" class="btn btn-danger">{{segment.name}}</button>
-              <button type="button" class="btn btn-danger" uib-dropdown-toggle>
-                <span class="caret"></span>
-                <span class="sr-only">Split button!</span>
-              </button>
-              <ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-                <li ng-repeat="item in currentSegmentItems track by $index" role="menuitem"><a href="#" ng-click="addSample(item)">{{item.zip_filename}}</a></li> 
-              </ul>
-            </div>
-            <div class="genre-wrapper">
+            <div class="genre-wrapper" ng-click="open('small', segment, currentFilter)">
                 <div class="ind-genre">
                 <div class="genre-name">{{segment.name}}</div>
                 <br>

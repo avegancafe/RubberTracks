@@ -10,6 +10,14 @@ body {
 	padding: 0 50px;
 }
 
+ul {
+	list-style: none;
+}
+
+a, a:hover {
+	text-decoration: none;
+}
+
 .genre {
 	font-family: Gibson;
 	width: 200px;
