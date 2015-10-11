@@ -8,6 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.0/ui-bootstrap-tpls.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/index.css">
+    <style>
+    	#dwnld-btn {
+    		visibility: hidden;
+    	}
+    </style>
 </head>
 <body ng-controller="MainController">
     <!-- <div ng-repeat="sample in selected track by $index">{{sample._id}}</div> -->
@@ -21,7 +26,7 @@
             </ul>
         </div>
     </script>
-    
+    <button ng-click="download()" id="dwnld-btn">download samples!</button>
     <div>This is a test: </div>
     <div class="btn-group" uib-dropdown is-open="status.isopen">
       <button id="single-button" type="button" class="btn btn-primary // filter-button" uib-dropdown-toggle ng-disabled="disabled">{{currentFilter}}</button>
