@@ -1,30 +1,65 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var a, b, c, d, e, f, g, h;
+
+
+
+/*
 window.onkeyup = function (e) {
-    console.log(e.keyCode);
     switch(e.keyCode) {
         case 65:
-            document.getElementById("0").play();
+            a.stop();
             break;
         case 83:
-            document.getElementById("1").play();
+            b.stop();
             break;
         case 68:
-            document.getElementById("2").play();
+            c.stop();
             break;
         case 70:
-            document.getElementById("3").play();
+            d.stop();
             break;
         case 74:
-            document.getElementById("4").play();
+            e.stop();
             break;
         case 75:
-            document.getElementById("5").play();
+            f.stop();
             break;
         case 76:
-            document.getElementById("6").play();
+            g.stop();
             break;
         case 186:
-            document.getElementById("7").play();
+            h.stop();
+            break;
+    }
+}
+
+*/
+
+window.onkeydown = function (e) {
+    switch(e.keyCode) {
+        case 65:
+            a.play();
+            break;
+        case 83:
+            b.play();
+            break;
+        case 68:
+            c.play();
+            break;
+        case 70:
+            d.play();
+            break;
+        case 74:
+            e.play();
+            break;
+        case 75:
+            f.play();
+            break;
+        case 76:
+            g.play();
+            break;
+        case 186:
+            h.play();
             break;
     }
 }
@@ -68,16 +103,47 @@ app.controller("MainController", function ($scope, $http, $uibModal) {
     $scope.allData = {};
     $scope.currentSegmentItems = ["test"];
     $scope.selected = [];
-    $scope.lastPad = 0;
+    $scope.lastPad = a;
 
     $scope.addSample = function (item) {
     	
         if ($scope.selected.length < 8) {
             $scope.selected.push(item);
-            var tag = document.getElementById(""+$scope.lastPad);
-            tag.src = "https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3");
-            console.log(tag.src);
-            $scope.lastPad++;
+            switch ($scope.lastPad) {
+                case a:
+                    a = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = b;
+                    break;
+                case b:
+                    b = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = c;
+                    break;
+                case c:
+                    c = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = d;
+                    break;
+                case d:
+                    d = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = e;
+                    break;
+                case e:
+                    e = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = f;
+                    break;
+                case f:
+                    f = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = g;
+                    break;
+                case g:
+                    g = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = h;
+                    break;
+                case h:
+                    h = new Howl({urls: ["https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3")], buffer: true});
+                    $scope.lastPad = a;
+                    break;
+            }
+            console.log(a);
         }
 
         if($scope.selected.length == 8){
