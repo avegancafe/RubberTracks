@@ -106,7 +106,7 @@ app.controller("MainController", function ($scope, $http, $uibModal) {
     $scope.lastPad = a;
 
     $scope.addSample = function (item) {
-    	
+        
         if ($scope.selected.length < 8) {
             $scope.selected.push(item);
             switch ($scope.lastPad) {
@@ -147,29 +147,26 @@ app.controller("MainController", function ($scope, $http, $uibModal) {
         }
 
         if($scope.selected.length == 8){
-        	document.getElementById('dwnld-btn').style.visibility = 'visible'
+            document.getElementById('dwnld-btn').style.visibility = 'visible'
         }
 
     };
 
     $scope.download = function () {
-   		var xmlhttp = new XMLHttpRequest();
+        var xmlhttp = new XMLHttpRequest();
 
-    	var durl = "http://10.207.219.16:8080/samples/"
-    	var uuid =  "68a4d4da-6e25-11e5-99ff-0e52404cc67c";
-    	var secret = "ab68rlMaeCOGKVCA0sqTE0EdxC4IyFjbSCZjic9K";
-		$scope.selected.forEach(function(sample){
-			var reqUrl = durl + sample._id + '/download?indaba_uuid=' + uuid; 
-			$http({url: reqUrl, method: "GET", headers: {"authorization": btoa("ab68rlMaeCOGKVCA0sqTE0EdxC4IyFjbSCZjic9K" + ":" + Date.now())}})
-				.then(function success (res) {
-					console.log(arguments);
-				}, function err (res) {
-					console.log("error");
-				});
-			// xmlhttp.open('GET', reqUrl );
-	  //  		xmlhttp.setRequestHeader("authorization", btoa("ab68rlMaeCOGKVCA0sqTE0EdxC4IyFjbSCZjic9K" + ":" + Date.now()))
-			// xmlhttp.send();
-		});
+        var durl = "https://hackathon.indabamusic.com/samples/"
+        var uuid =  "68a4d4da-6e25-11e5-99ff-0e52404cc67c";
+        var secret = "ab68rlMaeCOGKVCA0sqTE0EdxC4IyFjbSCZjic9K";
+        $scope.selected.forEach(function(sample){
+            var reqUrl = durl + sample._id + '/download?indaba_uuid=' + uuid; 
+            $http({url: reqUrl, method: "GET", headers: {"authorization": btoa("ab68rlMaeCOGKVCA0sqTE0EdxC4IyFjbSCZjic9K" + ":" + Date.now())}})
+                .then(function success (res) {
+                    console.log(arguments);
+                }, function err (res) {
+                    console.log("error");
+                });
+        });
     }
 
     $scope.fetchSegmentData = function (segment, currentFilter) {
