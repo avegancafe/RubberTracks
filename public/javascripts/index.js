@@ -1,10 +1,36 @@
-// require("angular");
-// require("angular-ui-bootstrap");
+window.onkeyup = function (e) {
+    console.log(e.keyCode);
+    switch(e.keyCode) {
+        case 65:
+            document.getElementById("0").play();
+            break;
+        case 83:
+            document.getElementById("1").play();
+            break;
+        case 68:
+            document.getElementById("2").play();
+            break;
+        case 70:
+            document.getElementById("3").play();
+            break;
+        case 74:
+            document.getElementById("4").play();
+            break;
+        case 75:
+            document.getElementById("5").play();
+            break;
+        case 76:
+            document.getElementById("6").play();
+            break;
+        case 186:
+            document.getElementById("7").play();
+            break;
+    }
+}
 
 var app = angular.module("RubberTracks", ["ui.bootstrap"]);
 
 app.controller("MainController", function ($scope, $http, $uibModal) {
-    $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.open = function (size, segment, currentFilter) {
         $http({
@@ -41,10 +67,15 @@ app.controller("MainController", function ($scope, $http, $uibModal) {
     $scope.allData = {};
     $scope.currentSegmentItems = ["test"];
     $scope.selected = [];
+    $scope.lastPad = 0;
 
     $scope.addSample = function (item) {
         if ($scope.selected.length < 8) {
-            $scope.selected.push(item._id);
+            $scope.selected.push(item);
+            var tag = document.getElementById(""+$scope.lastPad);
+            tag.src = "https://d34x6xks9kc6p2.cloudfront.net/" + item.s3_key.replace(/\.wav/g, ".mp3");
+            console.log(tag.src);
+            $scope.lastPad++;
         }
 
     };
