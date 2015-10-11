@@ -3,9 +3,9 @@
 <head>
     <title>RubberTracks</title>
     <script src="javascripts/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="javascripts/ui-bootstrap-0.14.0.min.js"></script>
-    <script src="dist/javascripts/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.0/ui-bootstrap-tpls.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/index.css">
@@ -16,7 +16,10 @@
     </style>
 </head>
 <body ng-controller="MainController">
-    <!-- <div ng-repeat="sample in selected track by $index">{{sample._id}}</div> -->
+    <div class="hide-this">
+    <div id="loader"></div>
+    </div>
+    <div class="show-this">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title">Im a modal!</h3>
@@ -27,7 +30,7 @@
             </ul>
         </div>
     </script>
-    <button ng-click="download()" id="dwnld-btn">download samples!</button>
+    <button ng-click="download()" id="dwnld-btn" class="btn btn-success">download samples!</button>
     <div>This is a test: </div>
     <div class="btn-group" uib-dropdown is-open="status.isopen">
       <button id="single-button" type="button" class="btn btn-primary // filter-button" uib-dropdown-toggle ng-disabled="disabled">{{currentFilter}}</button>
@@ -46,6 +49,7 @@
             </div>
         </div>
     </div>
+    <script src="dist/javascripts/index.js"></script>
 
     <!-- <audio src="" id="0"></audio>
     <audio src="" id="1"></audio>
@@ -55,6 +59,7 @@
     <audio src="" id="5"></audio>
     <audio src="" id="6"></audio>
     <audio src="" id="7"></audio> -->
+    </div>
 
 </body>
 </html>

@@ -1,5 +1,35 @@
 var a, b, c, d, e, f, g, h;
 
+var ProgressBar = require("progressbar.js");
+
+console.log(ProgressBar)
+var circle = 0;
+circle = new ProgressBar.Circle('#loader', {
+    color: '#FCB03C',
+    strokeWidth: 3.5,
+    trailWidth: 1.5,
+    duration: 7000,
+    easing: 'easeInOut',
+    text: {
+        value: '0'
+    },
+    step: function(state, bar) {
+        bar.setText((bar.value() * 100).toFixed(0));
+    }
+});
+
+circle.animate(
+    1,
+    {
+        easing: "easeInOutExpo"
+    },
+    function () {
+        $('.hide-this').animate({opacity: 0}, function () {
+            $(this).hide();
+            $(".show-this").animate({opacity: 1});
+        });
+    }
+);
 
 
 /*
